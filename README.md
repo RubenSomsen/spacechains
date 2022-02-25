@@ -54,7 +54,7 @@ Running this software requires compiling a rust project. If you want to keep thi
 
 The steps to compile it yourself are:
 ```
-git clone git@github.com/RubenSomsen/spacechains
+git clone https://github.com/RubenSomsen/spacechains
 cargo build --release
 cd target
 cd release
