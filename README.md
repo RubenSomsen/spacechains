@@ -2,7 +2,7 @@
 ### Intro
 This proof of concept will show how users can compete to commit a spacechain block into the Bitcoin blockchain.
 
-Spacechains are one-way pegged sidechains for Bitcoin. Watch [this video](https://youtu.be/N2ow4Q34Jeg), read [this article](https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302), and find [more links here](https://tiny.cc/somsen#spacechains). 
+Spacechains are one-way pegged sidechains for Bitcoin. Watch [this video](https://youtu.be/N2ow4Q34Jeg), read [this article](https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302), and find [more links here](https://tiny.cc/somsen#spacechains).
 
 If you get stuck, join the [spacechains Telegram chat](https://t.me/spacechains) and ask for help.
 
@@ -13,9 +13,9 @@ The software contains a set of pre-signed covenant transactions (one per block) 
 
 ### 1. Connect to signet
 
-You'll need Bitcoin Core. In `bitcoin.conf` set `signet=1` and synchronize your node (takes less than 15 minutes).
+You'll need Bitcoin Core. In `bitcoin.conf` set `signet=1` and synchronize your node (takes less than 15 minutes). Or, for the purposes of this demo you can just start it in a terminal windown with `bitcoind --signet` and then do all your CLI calls with `bitcoin-cli --signet`.
 
-Generate a new address by typing `getnewaddress` and then proceed to the [signet faucet](https://signet.bc-2.jp/) to receive 0.001 coins on it.
+Create a new wallet with `createwallet spacechain-demo`, then generate a new address by typing `getnewaddress` and then proceed to the [signet faucet](https://signet.bc-2.jp/) to receive 0.001 coins on it.
 
 ### 2. Locate the latest pre-signed covenant transaction
 
@@ -27,7 +27,7 @@ Now type in `listunspent`, and you will see information about the address you ju
 
 During this step we will generate a transaction with a single input and a single output, which will be used to pay a fee. We won't sign it until later.
 
-We will use the results from `listunspent` to make some changes to `createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"address\":0.0009}]"` .
+We will use the results from `listunspent` to make some changes to `createrawtransaction '[{"txid":"myid","vout":0}]' "[{"address":0.0009}]'` .
 
 Use the information from your faucet coins to replace `myid` with the txid and the vout of `0` with the correct `vout` (usually `0` or `1`).
 
@@ -35,16 +35,16 @@ Replace `address` with the address you used to receive the faucet coins (a new a
 
 Replace `0.0009` with the amount of coins that is in the input, minus the fee you'd like to pay. If your input has 0.001 and you'd like to pay a fee of 0.0001, then 0.0009 is appropriate.
 
-Example input: 
+Example input:
 ```
-createrawtransaction "[{\"txid\":\"c25adae7f0cc4c6ce783d51ffeac79dcb184b0fa32c39ebce01dbe20ce75cc84\",\"vout\":0}]" "[{\"tb1qcz6za0wwah3yn3x4f0hgeugmt7lg599gtaut6e\":0.0007}]"
+createrawtransaction '[{"txid":"c25adae7f0cc4c6ce783d51ffeac79dcb184b0fa32c39ebce01dbe20ce75cc84","vout":0}]' '[{"tb1qcz6za0wwah3yn3x4f0hgeugmt7lg599gtaut6e":0.0007}]'
 ```
 Example output:
 ```
 0200000001f472268495d3c06f48c90a7a7b122baf944dc5b334aa79fcfbdaf2e1545a2a7a0000000000ffffffff01905f010000000000160014c0b42ebdceede249c4d54bee8cf11b5fbe8a14a800000000
 ```
 ### 4. Pick a hash
-This is supposed to be a valid hash for a spacechain block, but for the purpose of this demo the content doesn't matter. 
+This is supposed to be a valid hash for a spacechain block, but for the purpose of this demo the content doesn't matter.
 
 You can [generate your own hex-encoded string](https://string-functions.com/string-hex.aspx) (up to 80 bytes), or simply use this one:  `68656c6c6f20776f726c64` (hello world).
 
@@ -82,7 +82,7 @@ Fee-bumping cpfp tx:
 The cpfp tx that you received in the previous step still needs to be signed, but you have to be certain that your input and output were not altered. In order to verify, run the following command in Bitcoin Core:
 `decoderawtransaction cpfp_tx`, where `cpfp_tx` is replaced with the actual output.
 
-If everything checks out, we are ready to sign, which is done with the command `signrawtransactionfromwallet cpfp_tx` (again, replacing `cpfp_tx` with the actual output). The output that you need is the `hex` value.
+If everything checks out, we are ready to sign, which is done with the command `signrawtransactionwithwallet cpfp_tx` (again, replacing `cpfp_tx` with the actual output). The output that you need is the `hex` value.
 
 Note that Bitcoin Core's output will also show you `complete": false` and `error": "Input not found or already spent`. This is expected behavior and can be ignored. The transaction is also spending an output from the covenant tx that we generated in the prior step, so Bitcoin Core is not aware of its existence yet.
 
