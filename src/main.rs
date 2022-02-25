@@ -16,8 +16,8 @@ fn main() {
         // TODO: parameter checks (valid length, valid hex)
         println!("Generating...");
         let (cov_tx, cpfp_tx) = generate_next_cov_tx_and_cpfp(&args[1], &args[2], &args[3]);
-        println!("Covenant tx:\n{cov_tx}");
-        println!("Fee-bumping cpfp tx:\n{cpfp_tx}");
+        println!("Covenant tx:\n{}", cov_tx);
+        println!("Fee-bumping cpfp tx:\n{}", cpfp_tx);
         println!("DONE!");
      }
      else {
@@ -122,7 +122,7 @@ fn generate_covenant_tx_sequence(key_string: &str, mut input_txid: String, mut i
     let key = ecc::ECC::new(key_string);
     //let script = build_covenant_script(&key.get_pk_string());
     //let p2sh_address = parser::script_to_p2sh_address(&script);
-    //println!("{p2sh_address}"); // 2NEcniP26o4oF2jUHgTAcncJnKt653gxrLw
+    //println!("{}", p2sh_address); // 2NEcniP26o4oF2jUHgTAcncJnKt653gxrLw
     for _ in 0..reps {
         let tx = build_covenant_tx(&input_txid, input_vout, input_satoshis, &key);
         let tx_string = parser::encode_to_hex(&tx);
@@ -140,7 +140,7 @@ fn find_covenant_tx(key_string: &str, mut input_txid: String, mut input_vout: u6
     let key = ecc::ECC::new(key_string);
     //let script = build_covenant_script(&key.get_pk_string());
     //let p2sh_address = parser::script_to_p2sh_address(&script);
-    //println!("{p2sh_address}"); // 2NEcniP26o4oF2jUHgTAcncJnKt653gxrLw
+    //println!("{}", p2sh_address); // 2NEcniP26o4oF2jUHgTAcncJnKt653gxrLw
     let mut bool = false;
     for _ in 0..52560 { // year
         let tx = build_covenant_tx(&input_txid, input_vout, input_satoshis, &key);

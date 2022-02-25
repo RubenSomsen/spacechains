@@ -54,7 +54,7 @@ Running this software requires compiling a rust project. If you want to keep thi
 
 The steps to compile it yourself are:
 ```
-git clone https://github.com/RubenSomsen/spacechains
+git clone git@github.com/RubenSomsen/spacechains
 cargo build --release
 cd target
 cd release
@@ -84,7 +84,7 @@ The cpfp tx that you received in the previous step still needs to be signed, but
 
 If everything checks out, we are ready to sign, which is done with the command `signrawtransactionfromwallet cpfp_tx` (again, replacing `cpfp_tx` with the actual output). The output that you need is the `hex` value.
 
-Note that Bitcoin Core will show you `error": "Input not found or already spent`. This is expected behavior and can be ignored. The transaction is also spending an output from the covenant tx that we generated in the prior step, so Bitcoin Core is not aware of its existence yet.
+Note that Bitcoin Core's output will also show you `complete": false` and `error": "Input not found or already spent`. This is expected behavior and can be ignored. The transaction is also spending an output from the covenant tx that we generated in the prior step, so Bitcoin Core is not aware of its existence yet.
 
 Example input:
 ```
