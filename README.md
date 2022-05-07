@@ -2,7 +2,7 @@
 ### Intro
 This proof of concept will show how users can compete to commit a spacechain block into the Bitcoin blockchain.
 
-Spacechains are one-way pegged sidechains for Bitcoin. Watch [this video](https://youtu.be/N2ow4Q34Jeg), read [this article](https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302), and find [more links here](https://tiny.cc/somsen#spacechains).
+Spacechains are one-way pegged sidechains for Bitcoin. Watch [this video](https://vimeo.com/703246895/d89aba6e56), read [this article](https://medium.com/@RubenSomsen/21-million-bitcoins-to-rule-all-sidechains-the-perpetual-one-way-peg-96cb2f8ac302), and find [more links here](https://tiny.cc/somsen#spacechains).
 
 If you get stuck, join the [spacechains Telegram chat](https://t.me/spacechains) and ask for help.
 
