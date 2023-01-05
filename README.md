@@ -15,7 +15,7 @@ The software contains a set of pre-signed covenant transactions (one per block) 
 
 You'll need Bitcoin Core. In `bitcoin.conf` set `signet=1` and synchronize your node (takes less than 15 minutes). Or, for the purposes of this demo you can just start it in a terminal windown with `bitcoind --signet` and then do all your CLI calls with `bitcoin-cli --signet`.
 
-Create a new wallet with `createwallet spacechain-demo`, then generate a new address by typing `getnewaddress` and then proceed to the [signet faucet](https://signet.bc-2.jp/) to receive 0.001 coins on it.
+Create a new wallet with `-named createwallet wallet_name=spacechain-demo descriptors=false`, then generate a new address by typing `getnewaddress` and then proceed to the [signet faucet](https://signet.bc-2.jp/) to receive 0.001 coins on it.
 
 ### 2. Locate the latest pre-signed covenant transaction
 
