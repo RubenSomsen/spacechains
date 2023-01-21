@@ -126,4 +126,4 @@ If you had any issues come report them in the [spacechains Telegram chat](https:
 
 Thank you for your time and interest in my work.
 
-My other projects can be found [here](https://tiny.cc/spacechains).
+My other projects can be found [here](https://tiny.cc/somsen).
