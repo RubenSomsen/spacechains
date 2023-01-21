@@ -77,6 +77,22 @@ Fee-bumping cpfp tx:
 0200000002757a11faa0eac7b182da1e80867ad536b56f437f5e5479a7b1486a0941d90b2f0000000000ffffffff1bfc856b8ca14703f9208c1bd4d2028526a24e19f5987c42c41e2c7b89bf411901000000040300b28b00000000027011010000000000160014c0b42ebdceede249c4d54bee8cf11b5fbe8a14a820030000000000000d6a0b68656c6c6f20776f726c6400000000
 ```
 
+### Docker Alternative
+
+Docker can be used to create reproducible builds without the need to install any other dependencies on the host.
+
+The steps to build the docker container are:
+```
+git clone https://github.com/RubenSomsen/spacechains
+cd spacechains
+docker build -t spacechains .
+```
+
+The parameters can then be specified when running the docker container:
+```
+docker run spacechains 5b9ca4b31dd67bd6afeb7b4bf83a3b33e0a99c13d4f00ae075a801eacdd99546 68656c6c6f20776f726c64 0200000001757a11faa0eac7b182da1e80867ad536b56f437f5e5479a7b1486a0941d90b2f0000000000ffffffff017011010000000000160014c0b42ebdceede249c4d54bee8cf11b5fbe8a14a800000000
+```
+
 ### 6. Verify and sign the cpfp tx
 
 The cpfp tx that you received in the previous step still needs to be signed, but you have to be certain that your input and output were not altered. In order to verify, run the following command in Bitcoin Core:
@@ -110,4 +126,4 @@ If you had any issues come report them in the [spacechains Telegram chat](https:
 
 Thank you for your time and interest in my work.
 
-My other projects can be found [here](https://tiny.cc/spacechains).
+My other projects can be found [here](https://tiny.cc/somsen).
